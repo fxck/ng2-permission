@@ -80,16 +80,16 @@ export class Ng2Permission {
 
 let appInjectorRef: Injector;
 export const appInjector = (injector?: Injector):Injector => {
-	if (injector) {
-	  appInjectorRef = injector;
-	}
+  if (injector) {
+    appInjectorRef = injector;
+  }
 
-	return appInjectorRef;
+  return appInjectorRef;
 };
 
 export const authorizeComponent = (authObj) => {
-	let _injector: Injector = appInjector();
-	let _permission: Ng2Permission = _injector.get(Ng2Permission);
+  let _injector: Injector = appInjector();
+  let _permission: Ng2Permission = _injector.get(Ng2Permission);
   let _router: Router = _injector.get(Router);
 
   return new Promise((resolve) => {
