@@ -35,7 +35,6 @@ export class App {
     _permission.define('admin', () => {
       return auth.data$.map(res => res.isAuthenticated && res.role === ADMIN ? true : false);
     });
-	*/
   }
 }
 
