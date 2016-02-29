@@ -1,3 +1,6 @@
+# EXPERIMENTAL, looking for contributors
+For now this is more of an experiment / proof of concept. There are things to be done https://github.com/fxck/ng2-permission/blob/master/TODO.md feel free to contribute.
+
 # ng2-permission
 Small service to go along @brandonroberts' `@CanActive()` hack(http://plnkr.co/edit/SF8gsYN1SvmUbkosHjqQ?p=preview) with API inspired by https://github.com/Narzerus/angular-permission
 
