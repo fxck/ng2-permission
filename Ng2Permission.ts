@@ -1,13 +1,22 @@
-import { Injectable, Injector } from 'angular2/core';
+import {
+  Directive,
+  Injectable,
+  Injector,
+  ViewContainerRef,
+  TemplateRef
+} from 'angular2/core';
 import { Router, ComponentInstruction } from 'angular2/router';
 
+import 'rxjs/add/observable/merge';
+import 'rxjs/add/operator/first';
+import 'rxjs/add/operator/take';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class Ng2Permission {
   private _store: Object = {};
 
-  constructor(private _router: Router) { }
+  constructor(private _router: Router) {}
 
   public define(name: string, validation) {
     this._store[name] = validation;
@@ -41,17 +50,17 @@ export class Ng2Permission {
         }
       });
 
-      return Observable
-        .merge(...mergeObsrArr)
-        .first(res => {
-          if (type === 'only') {
-            return !!res;
-          }
+        return Observable
+          .merge(...mergeObsrArr)
+          .first(res => {
+            if (type === 'only') {
+              return !!res;
+            }
 
-          if (type === 'except') {
-            return !res;
-          }
-        }, null, false);
+            if (type === 'except') {
+              return !res;
+            }
+          }, null, false);
 
     } else {
       return this._store[names[0]].call()
@@ -70,17 +79,17 @@ export class Ng2Permission {
 }
 
 let appInjectorRef: Injector;
-export const appInjector = (injector?: Injector): Injector => {
-  if (injector) {
-    appInjectorRef = injector;
-  }
+export const appInjector = (injector?: Injector):Injector => {
+	if (injector) {
+	  appInjectorRef = injector;
+	}
 
-  return appInjectorRef;
+	return appInjectorRef;
 };
 
 export const authorizeComponent = (authObj) => {
-  let _injector: Injector = appInjector();
-  let _permission: Ng2Permission = _injector.get(Ng2Permission);
+	let _injector: Injector = appInjector();
+	let _permission: Ng2Permission = _injector.get(Ng2Permission);
   let _router: Router = _injector.get(Router);
 
   return new Promise((resolve) => {
@@ -98,5 +107,4 @@ export const authorizeComponent = (authObj) => {
       });
 
   });
-
 };
