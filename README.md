@@ -6,14 +6,17 @@ Small service to go along @brandonroberts' `@CanActive()` hack(http://plnkr.co/e
 
 
 # Usage
-1) import service and add it to your bootstrap
+1) import service and add it to your bootstrap and store reference to injector in our appInjector service
 ```typescript
 
 import { Ng2Permission, appInjector } from './app/services/Ng2Permission';
 
 bootstrap(App, [
 	Ng2Permission
-])
+]).then((appRef: ngCore.ComponentRef) => {
+	// store a reference to the application injector
+	appInjector(appRef.injector);
+});
 ```
 
 2) inject `Ng2Permission` and define roles in your root component and their validation function that has to return `Observable` that results in either `true` or `false`
