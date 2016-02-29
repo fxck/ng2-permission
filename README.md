@@ -9,11 +9,12 @@ Small service to go along @brandonroberts' `@CanActive()` hack(http://plnkr.co/e
 1) import service and add it to your bootstrap and store reference to injector in our appInjector service
 ```typescript
 
+import { ComponentRed } from 'angular2/core';
 import { Ng2Permission, appInjector } from './app/services/Ng2Permission';
 
 bootstrap(App, [
 	Ng2Permission
-]).then((appRef: ngCore.ComponentRef) => {
+]).then((appRef: ComponentRef) => {
 	// store a reference to the application injector
 	appInjector(appRef.injector);
 });
@@ -77,8 +78,8 @@ import { Ng2Permission } from '../../../services/Ng2Permission';
   selector: 'some-component',
 })
 export class SomeComponent {
-	constructor(private _perm: Ng2Permission) {
-		_perm
+	constructor(private _permission: Ng2Permission) {
+		_permission
 			.authorize({
 				only: ['admin']
 			})
