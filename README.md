@@ -1,5 +1,5 @@
 # ng2-permission
-Small service to go along @brandonroberts' `@CanActive()` hack - http://plnkr.co/edit/SF8gsYN1SvmUbkosHjqQ?p=preview
+Small service to go along @brandonroberts' `@CanActive()` hack(http://plnkr.co/edit/SF8gsYN1SvmUbkosHjqQ?p=preview) with API inspired by https://github.com/Narzerus/angular-permission
 
 
 # Usage
